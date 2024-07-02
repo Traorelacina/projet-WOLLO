@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion et Inscription</title>
+    <link rel="stylesheet" href="style.css">
+        
+</head>
+<body>
+    <div class="container01">
+        <h2>Connexion</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Adresse e-mail" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div class="links">
+            <a href="#" id="showRegister">Créer un compte</a> |
+            <a href="#" id="showReset">Mot de passe oublié ?</a>
+        </div>
+
+        <form id="registerForm" style="display: none;">
+            <h2>Inscription</h2>
+            <input type="text" id="regName" placeholder="Nom complet" required>
+            <input type="email" id="regEmail" placeholder="Adresse e-mail" required>
+            <input type="password" id="regPassword" placeholder="Mot de passe" required>
+            <input type="password" id="regConfirmPassword" placeholder="Confirmer le mot de passe" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+
+        <form id="resetForm" style="display: none;">
+            <h2>Réinitialiser le mot de passe</h2>
+            <input type="email" id="resetEmail" placeholder="Adresse e-mail" required>
+            <button type="submit">Réinitialiser</button>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const resetForm = document.getElementById('resetForm');
+        const showRegister = document.getElementById('showRegister');
+        const showReset = document.getElementById('showReset');
+
+        function showForm(formToShow) {
+            [loginForm, registerForm, resetForm].forEach(form => {
+                form.style.display = form === formToShow ? 'flex' : 'none';
+            });
+        }
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm(registerForm);
+        });
+
+        showReset.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm(resetForm);
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Tentative de connexion');
+            localStorage.setItem('userLoggedIn', 'true');
+            window.location.href = 'home.html';
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Tentative d\'inscription');
+            localStorage.setItem('userLoggedIn', 'true');
+            window.location.href = 'home.html';
+        });
+
+        resetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('Tentative de réinitialisation du mot de passe');
+            alert('Un email de réinitialisation a été envoyé.');
+            showForm(loginForm);
+        });
+
+        // Vérifier si l'utilisateur est déjà connecté
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('userLoggedIn') === 'true') {
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html>

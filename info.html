@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image et Texte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .image-container {
+            width: 100%;
+            padding-bottom: 100%; /* Cela crée un carré parfait */
+            position: relative;
+            overflow: hidden;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cela assure que l'image couvre tout l'espace sans déformation */
+        }
+        .text-content {
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="./photo/jkynostvw4cirp4.png" alt="Image carrée">
+        </div>
+        <div class="text-content">
+            <h1>Titre de l'image</h1>
+            <p>Voici une description détaillée de l'image ci-dessus. Vous pouvez ajouter autant de texte que nécessaire ici. Le contenu s'ajustera automatiquement à la largeur du conteneur.</p>
+            <p>Vous pouvez ajouter plusieurs paragraphes si vous le souhaitez. Cette mise en page est responsive et s'adaptera à différentes tailles d'écran.</p>
+        </div>
+    </div>
+</body>
+</html>
